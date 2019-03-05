@@ -4,7 +4,7 @@ RUN apt-get update && \
     apt-get install -y \
         software-properties-common apt-transport-https \
         cabextract unzip python-numpy \
-        language-pack-zh-hans ttf-wqy-microhei && \
+        language-pack-zh-hans tzdata ttf-wqy-microhei && \
     # 安装 wine
     wget -nc https://dl.winehq.org/wine-builds/Release.key -O /tmp/wine.key && \
     apt-key add /tmp/wine.key && rm -f /tmp/wine.key && \
@@ -42,6 +42,7 @@ RUN sudo -Hu user WINEARCH=win32 /usr/bin/wine wineboot && \
 
 ENV LANG=zh_CN.UTF-8 \
     LC_ALL=zh_CN.UTF-8 \
+    TZ=Asia/Shanghai \
     COOLQ_URL=http://dlsec.cqp.me/cqa-tuling
 
 COPY vncmain.sh /app/vncmain.sh
