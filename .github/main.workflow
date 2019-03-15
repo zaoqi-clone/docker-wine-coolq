@@ -43,7 +43,7 @@ action "Filter Non-master Branch" {
 
 action "Filter Release" {
   uses = "actions/bin/filter@master"
-  args = "tag v*"
+  args = "tag 'v*'"
 }
 
 action "Push Latest" {
