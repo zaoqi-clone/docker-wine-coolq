@@ -8,11 +8,6 @@ workflow "Build and Push for Branches" {
   resolves = ["Push Branch"]
 }
 
-workflow "Build and Push for Releases" {
-  on = "release"
-  resolves = ["Push Release"]
-}
-
 action "Build Image" {
   needs = []
   uses = "actions/docker/cli@master"
@@ -55,11 +50,5 @@ action "Push Latest" {
 action "Push Branch" {
   uses = "actions/docker/cli@master"
   needs = ["Filter Non-master Branch", "Tag Image", "Login Registry"]
-  args = "push coolq/wine-coolq:$IMAGE_REF"
-}
-
-action "Push Release" {
-  uses = "actions/docker/cli@master"
-  needs = ["Filter Release", "Tag Image", "Login Registry"]
   args = "push coolq/wine-coolq:$IMAGE_REF"
 }
