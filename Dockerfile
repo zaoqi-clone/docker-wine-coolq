@@ -74,9 +74,6 @@ ENV LANG=zh_CN.UTF-8 \
     TZ=Asia/Shanghai \
     COOLQ_URL=http://dlsec.cqp.me/cqa-tuling
 
-COPY vncmain.sh /app/vncmain.sh
-COPY cq /usr/local/bin/cq
-COPY cont-init.d /etc/cont-init.d/
 COPY ./docker-root /
 
 VOLUME ["/home/user/coolq"]
