@@ -12,7 +12,12 @@ ENV LANG=en_US.UTF-8 \
 # 首先加用户，防止 uid/gid 不稳定
 RUN groupadd user && useradd -m -g user user
 
-RUN apt-get update && \
+RUN # 安装 wine 密钥+repo
+    wget -nc https://dl.winehq.org/wine-builds/Release.key -O /tmp/wine.key && \
+    apt-key add /tmp/wine.key && \
+    apt-add-repository -y https://dl.winehq.org/wine-builds/ubuntu && \
+    dpkg --add-architecture i386 && \
+    apt-get update && \
     apt-get install -y --allow-unauthenticated \
         python git \
         ca-certificates wget curl locales \
@@ -35,14 +40,10 @@ RUN apt-get update && \
     git clone --depth=1 https://github.com/novnc/websockify.git /app/src/websockify && \
     rm -fr /app/src/novnc/.git /app/src/websockify/.git && \
     # 安装 wine
-    wget -nc https://dl.winehq.org/wine-builds/Release.key -O /tmp/wine.key && \
-    apt-key add /tmp/wine.key && \
-    apt-add-repository -y https://dl.winehq.org/wine-builds/ubuntu && \
-    dpkg --add-architecture i386 && \
-    apt-get update && \
     apt-get install -y --allow-unauthenticated --install-recommends winehq-devel && \
     wget -O /usr/local/bin/winetricks https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks && \
     chmod 755 /usr/local/bin/winetricks && \
+    # 清理
     apt-get clean && \
     rm -rf /var/lib/apt/lists /tmp/*
 
