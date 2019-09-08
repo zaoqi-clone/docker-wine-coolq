@@ -1,8 +1,6 @@
 FROM oott123/novnc:v0.1.1
 
-COPY winhttp_2ksp4.verb /tmp/winhttp_2ksp4.verb
-COPY coolq.reg /tmp/coolq.reg
-COPY luna.msstyles /tmp/luna.msstyles
+COPY ./docker-root /
 
 RUN wget -nc https://dl.winehq.org/wine-builds/Release.key -O /tmp/wine.key && \
     apt-key add /tmp/wine.key && \
@@ -39,9 +37,5 @@ ENV LANG=zh_CN.UTF-8 \
     LC_ALL=zh_CN.UTF-8 \
     TZ=Asia/Shanghai \
     COOLQ_URL=http://dlsec.cqp.me/cqa-tuling
-
-COPY vncmain.sh /app/vncmain.sh
-COPY cq /usr/local/bin/cq
-COPY cont-init.d /etc/cont-init.d/
 
 VOLUME ["/home/user/coolq"]
