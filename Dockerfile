@@ -2,8 +2,7 @@ FROM oott123/novnc:v0.1.1
 
 COPY ./docker-root /
 
-RUN wget -nc https://dl.winehq.org/wine-builds/Release.key -O /tmp/wine.key && \
-    apt-key add /tmp/wine.key && \
+RUN wget -O - -nc https://dl.winehq.org/wine-builds/Release.key | apt-key add - && \
     apt-add-repository -y https://dl.winehq.org/wine-builds/ubuntu && \
     dpkg --add-architecture i386 && \
     apt-get update && \
@@ -15,7 +14,7 @@ RUN wget -nc https://dl.winehq.org/wine-builds/Release.key -O /tmp/wine.key && \
     wget -O /usr/local/bin/winetricks https://github.com/Winetricks/winetricks/raw/master/src/winetricks && \
     chmod 755 /usr/local/bin/winetricks && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists /tmp/*
+    rm -rf /var/lib/apt/lists
 
 RUN sudo -Hu user WINEARCH=win32 /usr/bin/wine wineboot && \
     sudo -Hu user mkdir -p /home/user/.wine/drive_c/windows/Resources/Themes/luna/ && \
