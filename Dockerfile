@@ -12,11 +12,12 @@ RUN wget -nc https://dl.winehq.org/wine-builds/Release.key -O /tmp/wine.key && \
         cabextract unzip python-numpy \
         language-pack-zh-hans tzdata ttf-wqy-microhei && \
     apt-get install -y --allow-unauthenticated --install-recommends winehq-devel && \
-    wget -O /usr/local/bin/winetricks https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks && \
+    wget -O /usr/local/bin/winetricks https://github.com/Winetricks/winetricks/raw/master/src/winetricks && \
     chmod 755 /usr/local/bin/winetricks && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists && \
-    sudo -Hu user WINEARCH=win32 /usr/bin/wine wineboot && \
+    rm -rf /var/lib/apt/lists /tmp/*
+
+RUN sudo -Hu user WINEARCH=win32 /usr/bin/wine wineboot && \
     sudo -Hu user mkdir -p /home/user/.wine/drive_c/windows/Resources/Themes/luna/ && \
     sudo -Hu user cp /tmp/luna.msstyles /home/user/.wine/drive_c/windows/Resources/Themes/luna/luna.msstyles && \
     sudo -Hu user /usr/bin/wine regedit.exe /s /tmp/coolq.reg && \
