@@ -19,8 +19,8 @@ RUN apt-get update && apt-get install -y wget software-properties-common apt-tra
 
 RUN chsh -s /bin/bash user && \
     su user -c 'WINEARCH=win32 /usr/bin/wine wineboot' && \
-    mkdir -p /home/user/.wine/drive_c/windows/Resources/Themes/luna/ && \
-    cp /tmp/luna.msstyles /home/user/.wine/drive_c/windows/Resources/Themes/luna/luna.msstyles && \
+    su user -c 'mkdir -p /home/user/.wine/drive_c/windows/Resources/Themes/luna/' && \
+    su user -c 'cp /tmp/luna.msstyles /home/user/.wine/drive_c/windows/Resources/Themes/luna/luna.msstyles' && \
     su user -c '/usr/bin/wine regedit.exe /s /tmp/coolq.reg' && \
     su user -c 'wineboot' && \
     echo 'quiet=on' > /etc/wgetrc && \
@@ -31,8 +31,8 @@ RUN chsh -s /bin/bash user && \
     wget https://dlsec.cqp.me/docker-simsun -O /tmp/simsun.zip && \
     mkdir -p /home/user/.wine/drive_c/windows/Fonts && \
     unzip /tmp/simsun.zip -d /home/user/.wine/drive_c/windows/Fonts && \
-    mkdir /home/user/coolq && \
     chown -R user:user /home/user/.wine && \
+    mkdir /home/user/coolq && \
     rm -rf /home/user/.cache /tmp/* /etc/wgetrc
 
 ENV LANG=zh_CN.UTF-8 \
