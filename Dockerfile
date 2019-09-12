@@ -7,8 +7,7 @@ RUN apt-get update && apt-get install -y wget software-properties-common apt-tra
     wget -O - -nc https://dl.winehq.org/wine-builds/Release.key | apt-key add - && \
     apt-add-repository -y https://dl.winehq.org/wine-builds/ubuntu && \
     dpkg --add-architecture i386 && \
-    apt-get update && \
-    apt-get install -y \
+    apt-get update && apt-get install -y \
         sudo cabextract unzip python-numpy \
         language-pack-zh-hans tzdata ttf-wqy-microhei && \
     apt-get install -y --allow-unauthenticated --install-recommends winehq-devel && \
