@@ -2,7 +2,7 @@ FROM oott123/novnc:v0.2.2
 
 COPY ./docker-root /
 
-RUN apt-get update && apt-get install -y --allow-unauthenticated wget software-properties-common apt-transport-https && \
+RUN apt-get update && apt-get install -y --allow-unauthenticated sudo wget software-properties-common apt-transport-https && \
     wget -O - -nc https://dl.winehq.org/wine-builds/Release.key | apt-key add - && \
     apt-add-repository -y https://dl.winehq.org/wine-builds/ubuntu && \
     dpkg --add-architecture i386 && \
