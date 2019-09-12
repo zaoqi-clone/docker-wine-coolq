@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y --allow-unauthenticated sudo wget softw
     apt-get install -y --allow-unauthenticated --install-recommends winehq-devel && \
     wget -O /usr/local/bin/winetricks https://github.com/Winetricks/winetricks/raw/master/src/winetricks && \
     chmod 755 /usr/local/bin/winetricks && \
-    apt-get purge -y software-properties-common apt-transport-https && \
+    apt-get purge -y sudo software-properties-common apt-transport-https && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists
 
