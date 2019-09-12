@@ -2,13 +2,14 @@ FROM oott123/novnc:v0.2.2
 
 COPY ./docker-root /
 
-RUN apt-get update && apt-get install -y --allow-unauthenticated sudo wget software-properties-common apt-transport-https && \
+# 先安装增加wine软件源需要的包。安装完wine以后卸载它们。
+RUN apt-get update && apt-get install -y wget software-properties-common apt-transport-https && \
     wget -O - -nc https://dl.winehq.org/wine-builds/Release.key | apt-key add - && \
     apt-add-repository -y https://dl.winehq.org/wine-builds/ubuntu && \
     dpkg --add-architecture i386 && \
     apt-get update && \
-    apt-get install -y --allow-unauthenticated \
-        cabextract unzip python-numpy \
+    apt-get install -y \
+        sudo cabextract unzip python-numpy \
         language-pack-zh-hans tzdata ttf-wqy-microhei && \
     apt-get install -y --allow-unauthenticated --install-recommends winehq-devel && \
     wget -O /usr/local/bin/winetricks https://github.com/Winetricks/winetricks/raw/master/src/winetricks && \
