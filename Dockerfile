@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y wget software-properties-common apt-tra
     wget -O /usr/local/bin/winetricks https://github.com/Winetricks/winetricks/raw/master/src/winetricks && \
     chmod 755 /usr/local/bin/winetricks && \
     apt-get purge -y software-properties-common apt-transport-https && \
+    apt-get autoremove -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists
 
