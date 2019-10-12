@@ -1,6 +1,6 @@
 # docker-wine-coolq
 
-[![Actions Status](https://wdp9fww0r9.execute-api.us-west-2.amazonaws.com/production/badge/coolq/docker-wine-coolq)](https://wdp9fww0r9.execute-api.us-west-2.amazonaws.com/production/results/coolq/docker-wine-coolq) [![GitHub release](https://img.shields.io/github/release/coolq/docker-wine-coolq.svg)](https://github.com/CoolQ/docker-wine-coolq/releases) ![GitHub](https://img.shields.io/github/license/coolq/docker-wine-coolq.svg) [![Docker pulls](https://img.shields.io/docker/pulls/coolq/wine-coolq.svg)](https://hub.docker.com/r/coolq/wine-coolq) ![Image Size](https://img.shields.io/microbadger/image-size/coolq/wine-coolq.svg)
+[![Actions Status](https://github.com/CoolQ/docker-wine-coolq/workflows/Build%20and%20Push%20for%20Branches/badge.svg)](https://github.com/CoolQ/docker-wine-coolq/actions) [![GitHub release](https://img.shields.io/github/release/coolq/docker-wine-coolq.svg)](https://github.com/CoolQ/docker-wine-coolq/releases) ![GitHub](https://img.shields.io/github/license/coolq/docker-wine-coolq.svg) [![Docker pulls](https://img.shields.io/docker/pulls/coolq/wine-coolq.svg)](https://hub.docker.com/r/coolq/wine-coolq) ![Image Size](https://img.shields.io/microbadger/image-size/coolq/wine-coolq.svg)
 
 docker-wine-coolq 可以使你通过 Wine 在 Docker 容器中运行 酷Q Air 或 酷Q Pro。
 
